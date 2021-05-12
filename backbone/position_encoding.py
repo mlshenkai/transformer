@@ -20,7 +20,12 @@ def get_sinusoid_encoding_position(n_position: int, d_model: int) -> torch.Float
     def get_position_angle_vec(position):
         return [cal_angle(position, hid_j) for hid_j in range(d_model)]
 
-    sinusoid_table = np.array([get_position_angle_vec(position_i)] for position_i in range(n_position))
+    sinusoid_table = np.array([get_position_angle_vec(position_i) for position_i in range(n_position)])
     sinusoid_table[:, 0::2] = np.sin(sinusoid_table[:, 0::2])
     sinusoid_table[:, 1::2] = np.cos(sinusoid_table[:, 1::2])
     return torch.FloatTensor(sinusoid_table)
+
+
+if __name__=="__main__":
+    position_embedding=get_sinusoid_encoding_position(10,512)
+    print(position_embedding)
