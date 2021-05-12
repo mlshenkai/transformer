@@ -26,6 +26,6 @@ def get_sinusoid_encoding_position(n_position: int, d_model: int) -> torch.Float
     return torch.FloatTensor(sinusoid_table)
 
 
-if __name__=="__main__":
-    position_embedding=get_sinusoid_encoding_position(10,512)
+if __name__ == "__main__":
+    position_embedding = get_sinusoid_encoding_position(10, 512)
     print(position_embedding)
