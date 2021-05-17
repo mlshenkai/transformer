@@ -43,4 +43,4 @@ class MultiHeadAttention(nn.Module):
         context = context.transpose(1, 2).reshape(batch_size, -1,
                                                   self.n_heads * self.d_v)  # [batch_size,len_q,n_heads*d_v]
         output = self.fc(context)  # [batch_size,len_q,d_model]
-        return nn.LayerNorm(self.d_model).cuda()(output + residual), attn
+        return nn.LayerNorm(self.d_model)(output + residual), attn

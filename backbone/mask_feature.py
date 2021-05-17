@@ -18,7 +18,7 @@ def get_attn_pad_mask(seq_q: torch.Tensor, seq_k: torch.Tensor):
     batch_size, len_k = seq_k.size()
 
     pad_attn_mask = seq_k.data.eq(0).unsqueeze(1)  # [batch_size,1,len_k],
-    return pad_attn_mask.expend(batch_size, len_q, len_k)
+    return pad_attn_mask.expand(batch_size, len_q, len_k)
 
 
 # subsequence mask 同于在decode中屏蔽未来时刻的单词

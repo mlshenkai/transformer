@@ -23,4 +23,4 @@ class PoswiseFeedForWardNet(nn.Module):
         """
         residual = inputs
         output = self.fc(inputs)
-        return nn.LayerNorm(self.d_model).cuda()(output + residual)  # [batch_size,seq_len,d_model]
+        return nn.LayerNorm(self.d_model)(output + residual)  # [batch_size,seq_len,d_model]
